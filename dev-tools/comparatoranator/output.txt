@@ -1,0 +1,325 @@
+
+
+:s: img = imread('sample_images/color/10r.bmp'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/10r.bmp'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/10r.jpg'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/10r.jpg'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/10r.png'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/10r.png'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/10r.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/10r.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/10r_deflate.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/10r_deflate.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/10s.bmp'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/10s.bmp'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/10s.jpg'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/10s.jpg'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/10s.png'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/10s.png'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/10s.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/10s.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/10s_deflate.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/10s_deflate.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/katoch.bmp'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/katoch.bmp'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/katoch.jpg'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/katoch.jpg'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/katoch.png'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/katoch.png'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/katoch.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/katoch.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/manipal.bmp'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/manipal.bmp'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/manipal.jpg'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/manipal.jpg'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/manipal.png'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/manipal.png'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/color/manipal.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/color/manipal.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/10r.bmp'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/10r.bmp'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/10r.jpg'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/10r.jpg'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/10r.png'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/10r.png'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/10r.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/10r.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/10r_deflate.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/10r_deflate.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/10s.bmp'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/10s.bmp'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/10s.jpg'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/10s.jpg'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/10s.png'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/10s.png'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/10s.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/10s.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/10s_deflate.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/10s_deflate.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/katoch.bmp'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/katoch.bmp'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/katoch.jpg'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/katoch.jpg'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/katoch.png'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/katoch.png'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/katoch.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/katoch.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/manipal.bmp'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/manipal.bmp'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/manipal.jpg'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/manipal.jpg'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/manipal.png'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/manipal.png'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);
+
+:s: img = imread('sample_images/greyscale/manipal.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+:m: img = imread('sample_images/greyscale/manipal.tiff'); imgH = size(img, 1); imgW = size(img, 2);
+
+:s:  ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m:  ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s:  ans = imsharpen(img);
+:m:  ans = imsharpen(img);

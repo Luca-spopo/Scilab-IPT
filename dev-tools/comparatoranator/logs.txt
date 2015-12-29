@@ -1,0 +1,91 @@
+
+
+Nothing to compare for scilab  img = imread('sample_images/color/10r.bmp'); imgH = size(img, 1); imgW = size(img, 2); and matlab  img = imread('sample_images/color/10r.bmp'); imgH = size(img, 1); imgW = size(img, 2);.
+
+Match for scilab   ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2)); and matlab   ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+Mismatch for scilab   ans = imsharpen(img); and matlab   ans = imsharpen(img);
+
+Nothing to compare for scilab  img = imread('sample_images/color/10r.jpg'); imgH = size(img, 1); imgW = size(img, 2); and matlab  img = imread('sample_images/color/10r.jpg'); imgH = size(img, 1); imgW = size(img, 2);.
+
+Match for scilab   ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2)); and matlab   ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+Mismatch for scilab   ans = imsharpen(img); and matlab   ans = imsharpen(img);
+
+Nothing to compare for scilab  img = imread('sample_images/color/10r.png'); imgH = size(img, 1); imgW = size(img, 2); and matlab  img = imread('sample_images/color/10r.png'); imgH = size(img, 1); imgW = size(img, 2);.
+
+Match for scilab   ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2)); and matlab   ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+Mismatch for scilab   ans = imsharpen(img); and matlab   ans = imsharpen(img);
+
+Nothing to compare for scilab  img = imread('sample_images/color/10r.tiff'); imgH = size(img, 1); imgW = size(img, 2); and matlab  img = imread('sample_images/color/10r.tiff'); imgH = size(img, 1); imgW = size(img, 2);.
+
+Match for scilab   ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2)); and matlab   ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+Mismatch for scilab   ans = imsharpen(img); and matlab   ans = imsharpen(img);
+
+Nothing to compare for scilab  img = imread('sample_images/color/10r_deflate.tiff'); imgH = size(img, 1); imgW = size(img, 2); and matlab  img = imread('sample_images/color/10r_deflate.tiff'); imgH = size(img, 1); imgW = size(img, 2);.
+
+Match for scilab   ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2)); and matlab   ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+Mismatch for scilab   ans = imsharpen(img); and matlab   ans = imsharpen(img);
+
+Nothing to compare for scilab  img = imread('sample_images/color/10s.bmp'); imgH = size(img, 1); imgW = size(img, 2); and matlab  img = imread('sample_images/color/10s.bmp'); imgH = size(img, 1); imgW = size(img, 2);.
+
+Match for scilab   ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2)); and matlab   ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+Mismatch for scilab   ans = imsharpen(img); and matlab   ans = imsharpen(img);
+
+Nothing to compare for scilab  img = imread('sample_images/color/10s.jpg'); imgH = size(img, 1); imgW = size(img, 2); and matlab  img = imread('sample_images/color/10s.jpg'); imgH = size(img, 1); imgW = size(img, 2);.
+
+Match for scilab   ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2)); and matlab   ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+Mismatch for scilab   ans = imsharpen(img); and matlab   ans = imsharpen(img);
+
+Nothing to compare for scilab  img = imread('sample_images/color/10s.png'); imgH = size(img, 1); imgW = size(img, 2); and matlab  img = imread('sample_images/color/10s.png'); imgH = size(img, 1); imgW = size(img, 2);.
+
+Match for scilab   ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2)); and matlab   ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+Mismatch for scilab   ans = imsharpen(img); and matlab   ans = imsharpen(img);
+
+Nothing to compare for scilab  img = imread('sample_images/color/10s.tiff'); imgH = size(img, 1); imgW = size(img, 2); and matlab  img = imread('sample_images/color/10s.tiff'); imgH = size(img, 1); imgW = size(img, 2);.
+
+Match for scilab   ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2)); and matlab   ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+Mismatch for scilab   ans = imsharpen(img); and matlab   ans = imsharpen(img);
+
+Nothing to compare for scilab  img = imread('sample_images/color/10s_deflate.tiff'); imgH = size(img, 1); imgW = size(img, 2); and matlab  img = imread('sample_images/color/10s_deflate.tiff'); imgH = size(img, 1); imgW = size(img, 2);.
+
+Match for scilab   ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2)); and matlab   ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+Mismatch for scilab   ans = imsharpen(img); and matlab   ans = imsharpen(img);
+
+Nothing to compare for scilab  img = imread('sample_images/color/katoch.bmp'); imgH = size(img, 1); imgW = size(img, 2); and matlab  img = imread('sample_images/color/katoch.bmp'); imgH = size(img, 1); imgW = size(img, 2);.
+
+Mismatch for scilab   ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2)); and matlab   ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+Mismatch for scilab   ans = imsharpen(img); and matlab   ans = imsharpen(img);
+
+Nothing to compare for scilab  img = imread('sample_images/color/katoch.jpg'); imgH = size(img, 1); imgW = size(img, 2); and matlab  img = imread('sample_images/color/katoch.jpg'); imgH = size(img, 1); imgW = size(img, 2);.
+
+Mismatch for scilab   ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2)); and matlab   ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+Mismatch for scilab   ans = imsharpen(img); and matlab   ans = imsharpen(img);
+
+Nothing to compare for scilab  img = imread('sample_images/color/katoch.png'); imgH = size(img, 1); imgW = size(img, 2); and matlab  img = imread('sample_images/color/katoch.png'); imgH = size(img, 1); imgW = size(img, 2);.
+
+Mismatch for scilab   ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2)); and matlab   ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+Mismatch for scilab   ans = imsharpen(img); and matlab   ans = imsharpen(img);
+
+Nothing to compare for scilab  img = imread('sample_images/color/katoch.tiff'); imgH = size(img, 1); imgW = size(img, 2); and matlab  img = imread('sample_images/color/katoch.tiff'); imgH = size(img, 1); imgW = size(img, 2);.
+
+Mismatch for scilab   ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2)); and matlab   ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+Mismatch for scilab   ans = imsharpen(img); and matlab   ans = imsharpen(img);
+
+Nothing to compare for scilab  img = imread('sample_images/color/manipal.bmp'); imgH = size(img, 1); imgW = size(img, 2); and matlab  img = imread('sample_images/color/manipal.bmp'); imgH = size(img, 1); imgW = size(img, 2);.
+
+Mismatch for scilab   ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2)); and matlab   ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+Nothing to compare for scilab   ans = imsharpen(img); and matlab   ans = imsharpen(img);.

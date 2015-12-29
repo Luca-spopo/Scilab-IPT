@@ -1,0 +1,26 @@
+//Author: Anirudh Katoch
+//katoch.anirudh(at)gmail.com
+
+//Function to convert a list of matrices to a 3d hypermatrix
+//Used to convert list retreived from gateway functions to image matrix
+//Works for any number of channels. Each channel is an element of the list and is represented by a 2D matrix.
+function res = il2mat(a)
+    if type(a)<>15 then //If a is not a list
+        error(56)
+     end
+     zmax = length(a);
+     for zi=a do
+         if type(zi)==15 or type(zi)==16 then
+             //recursive stuff here, if you choose to do so.
+         elseif(type(zi)~=8) //I'm only allowing integer matrices. Tweak later for whatever type safety you want.
+             error("Invalid matrix in list")
+         end
+         if ~isequal(size(zi), size(a(1))) then
+             error("The matrices in the list have inconsistent sizes!")
+         end
+     end
+     res = a(1);
+     for zi=2:zmax do
+         res(:, :, zi) = a(zi);
+     end
+endfunction

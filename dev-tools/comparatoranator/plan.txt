@@ -1,0 +1,23 @@
+Matlab script:
+
+-Start scilab script on a thread with unix('scilab scilabScript.sci &')
+-Input function name and parameters from user or list
+-(Optional: Input MATLAB function name and parameters from user or list)
+-Dump the scilab command to file sciin
+-#1 Unblock scilab (echo FilthyIPC > goScilab)
+-run the matlab function
+-dump the outout in matOut.mat
+-#2 Wait for scilab to complete processing (cat goMatlab)
+-Go to step 2
+
+
+Scilab script:
+
+-#1 Wait for matlab (cat goScilab)
+-Read the functions queued in sciin
+-Execute the functions and store output
+-#2 Synch with matlab (go Matlab)
+-load matOut.mat
+-Compare and store in logs.txt
+-goto step 1
+

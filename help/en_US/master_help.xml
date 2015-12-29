@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+<!--Begin Entities-->
+<!ENTITY a25772f47f5e18506c95ce61bb19984ff SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/blur.xml">
+<!ENTITY a6329f11f59e5e685d41a9c556416cd18 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/canny.xml">
+<!ENTITY a35024983faf07f0011ad0ceb27a78d7b SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/cornerEigenValAndVecs.xml">
+<!ENTITY a2b4a6711bf4d81295094d3d685744fa1 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/cornerHarris.xml">
+<!ENTITY a703ecd98f9c2b1d0e2b6ba5749f384f1 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/filter2D.xml">
+<!ENTITY acebe2f7feb996e72a5165dac7189e792 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/gaussianblur.xml">
+<!ENTITY a55fa104c062001c2996cc8cdb88c25d9 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/getTextSize.xml">
+<!ENTITY ac57ae0a5635dc4ad31adfad911bc9f41 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/houghlines.xml">
+<!ENTITY a7f8205edee316ed0cc52be4ef0a7e864 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/houghlinesp.xml">
+<!ENTITY a863190d700bba19e18d2df405617a4af SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/im2double.xml">
+<!ENTITY ae0441d59713d84dcafb788091dfd4dfb SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/imcontrast.xml">
+<!ENTITY a324ecea8c42c46dc5229722a80e4860b SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/imcrop.xml">
+<!ENTITY a1ec7cc0ed666381bf439de63497d5de7 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/imread.xml">
+<!ENTITY ad46fbe7883c5e410a6f612a881141575 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/imresize.xml">
+<!ENTITY a82a6eb4d6a509f4bfc7208c3f916a780 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/imsharpen.xml">
+<!ENTITY ad9e5a1bc6731852efbaa17351e6b9d83 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/imwrite.xml">
+<!ENTITY a7cf9f6968dda6f1010b91d763c692742 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/montage.xml">
+<!ENTITY a33e19d6201fa78ff766ddb08c59ec8f0 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/undistort.xml">
+<!--End Entities-->
+]>
+<book version="5.0-subset Scilab" xml:lang="en_US"
+      xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:mml="http://www.w3.org/1998/Math/MathML"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:db="http://docbook.org/ns/docbook">
+  <info xml:id='image_processing_toolbox_manual'>
+    <title>Image Processing Toolbox</title>
+  </info>
+
+<part xml:id='section_379e0abf30b23a2969118e170eb8f088'>
+<title>Image Processing Toolbox</title>
+&a25772f47f5e18506c95ce61bb19984ff;
+&a6329f11f59e5e685d41a9c556416cd18;
+&a35024983faf07f0011ad0ceb27a78d7b;
+&a2b4a6711bf4d81295094d3d685744fa1;
+&a703ecd98f9c2b1d0e2b6ba5749f384f1;
+&acebe2f7feb996e72a5165dac7189e792;
+&a55fa104c062001c2996cc8cdb88c25d9;
+&ac57ae0a5635dc4ad31adfad911bc9f41;
+&a7f8205edee316ed0cc52be4ef0a7e864;
+&a863190d700bba19e18d2df405617a4af;
+&ae0441d59713d84dcafb788091dfd4dfb;
+&a324ecea8c42c46dc5229722a80e4860b;
+&a1ec7cc0ed666381bf439de63497d5de7;
+&ad46fbe7883c5e410a6f612a881141575;
+&a82a6eb4d6a509f4bfc7208c3f916a780;
+&ad9e5a1bc6731852efbaa17351e6b9d83;
+&a7cf9f6968dda6f1010b91d763c692742;
+&a33e19d6201fa78ff766ddb08c59ec8f0;
+</part>
+</book>

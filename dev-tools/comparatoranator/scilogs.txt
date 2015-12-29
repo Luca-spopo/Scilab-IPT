@@ -1,0 +1,1627 @@
+Scilab 5.5.0 (Apr 17 2014, 10:06:10)
+SciScript.sce says hello world! 
+-->function res = tryunix(a)
+-->    res = unix(a);
+-->    if(res<>0)
+-->        error('Could not execute unix command: '+a)
+-->    end
+-->endfunction
+ 
+ 
+-->//returns 0 when equal
+ 
+ 
+-->//Redefine this function if you need to implement stuff like histogram difference etc while comparing the outputs
+ 
+-->//As it is, it is pretty intolerant of any differences. I have implemented strcmp though.
+ 
+ 
+-->//Author: Anirudh Katoch
+ 
+-->//katoch.anirudh(at)gmail.com
+ 
+ 
+-->exec modified_if.sci
+ 
+-->//made to work for mlists (hypermatrices)
+ 
+ 
+-->//Author: Anirudh Katoch
+ 
+-->//katoch.anirudh(at)gmail.com
+ 
+ 
+-->function res = modified_if(condi)
+-->	if(type(condi) == 17)
+-->		res = condi(1);
+-->		for i=2:size(condi, 3) do
+-->			res = res & condi(:, :, i);
+-->		end
+-->	else
+-->		if(condi)
+-->			res = %t;
+-->		else
+-->			res = %f;
+-->		end
+-->	end
+-->endfunction
+ 
+ 
+ 
+-->function res = cmp(A, B)
+-->	
+-->	temp = 'This value was returned because the statement did not return anything decent.';
+-->	try
+-->		if(A==temp)
+-->			res = -1; //Nothing to compare
+-->			return
+-->		end
+-->	catch
+-->	end
+-->	try
+-->		if(B==temp) //Didnt put them as (A == temp | B==temp) because one of them may throw an error. Entire expression is evaluated. It's not short circuit.
+-->			res = -1; //Nothing to compare
+-->			return
+-->		end
+-->	catch
+-->	end
+-->	try
+-->		if(A==B)
+-->			res = 0
+-->			return
+-->		end
+-->	catch
+-->	end
+-->	try
+-->		res = 1;
+-->		// a difference of 1.0e-15 * -0.4441 was detected between some matlab and scilab outputs.
+-->		// hence using A-B<threshold instead of A==B
+-->		//If(condition) doesn't take mlists because it hates me.
+-->		if (modified_if(abs(A-B)<0.00000001)) //But for some reason abs does.
+-->			res = 0;
+-->		end
+-->	catch
+-->		//This usually means the array sizes didnt match up.
+-->		//or A-B didnt run for whatever reason.
+-->		res = 1;
+-->	end
+-->endfunction
+ 
+ 
+-->function[] =show(Img,ColorMap) 
+-->	     FigureHandle = gcf();
+-->	     drawlater();
+-->	     FigureHandle.color_map = ColorMap
+-->	     FigureHandle.background = -2; // sets the background to white
+-->	     FigureHandle.figure_name = "Title";
+-->	     [NumberOfRows NumberOfColumns] = size(Img);
+-->	     FigureHandle.axes_size = [NumberOfColumns NumberOfRows];
+-->	     delete(gca()); // previous image is deleted
+-->	     Diagram = gca();
+-->	     [NumberOfRows NumberOfColumns] = size(Img);
+-->	     Diagram.data_bounds = [1, 1; NumberOfColumns, NumberOfRows];
+-->	     Diagram.axes_visible = ['off' 'off' 'off'];
+-->	     Diagram.isoview = 'on';
+-->	     Options = '082'; // Box is drawn around image.
+-->	     //printf("\nGiven to Matplot: "); //DEBUG:
+-->	     //printf(typeof(Img));	       //DEBUG:	
+-->	     Matplot(Img, Options); 
+-->	     drawnow();
+-->endfunction
+ 
+ 
+-->//Author  :Priyanka Hiranandani NIT Surat    
+ 
+-->//TODO: Does not work for uint16 and uint32 type matrices.
+ 
+-->function[] =imshow(Image)
+-->    global TYPE_DOUBLE;         //retrieving list and creating 3 dimensional matrix out of it
+-->    dimensions=size(Image)
+-->    MaxUInt8 = 2 ^ 8 - 1;
+-->    MaxUInt16 = 2 ^ 16 - 1;
+-->    MaxUInt32 = 2 ^ 32 - 1;
+-->    MaximumGrayValue = MaxUInt32;  
+-->    if dimensions==3 then 
+-->         matSize=size(Image(1));
+-->         r=matrix(Image(1),matSize(1),matSize(2));
+-->         g=matrix(Image(2),matSize(1),matSize(2));
+-->         b=matrix(Image(3),matSize(1),matSize(2));
+-->         z(:,:,1)=uint8(r);    //Since Matplot is not working with uint16 and uint32, convert every image to a 
+-->         z(:,:,2)=uint8(g);    //8 bit palette.
+-->         z(:,:,3)=uint8(b);    //Note: this will affect the color depth.
+-->         [NumberOfRows NumberOfColumns NumberOfChannels] = size(z);
+-->         NumberOfPixels = NumberOfRows * NumberOfColumns;
+-->         Sample = z(1);
+-->	if type(Sample) == 1 then //type 1 = real/complex matrix of double
+-->             ColorMap = matrix(z, NumberOfPixels, NumberOfChannels);
+-->             disp(ColorMap); 
+-->         else
+-->            TypeName = typeof(Sample)
+-->             select TypeName
+-->                 case 'uint8' 
+-->                    MaxGrayValue = MaxUInt8;
+-->                 case 'uint16'
+-->                    MaxGrayValue = MaxUInt16;
+-->                 case 'uint32'
+-->                    MaxGrayValue = MaxUInt32;
+-->         end;  
+-->         ColorMap = double(matrix(z, NumberOfPixels, NumberOfChannels)) / MaxGrayValue;
+-->         end;       
+-->         Img=z;
+-->     //Grayscale
+-->     elseif dimensions==1 then
+-->         matSize = size(Image(1));
+-->         Img=matrix(Image(1),matSize(1),matSize(2));
+-->         Img=Img';
+-->         select typeof(Img)
+-->             case 'uint8' 
+-->                MaximumGrayValue = MaxUInt8;
+-->             case 'uint16'  
+-->                MaximumGrayValue = max(Image(:));
+-->             case 'uint32' 
+-->                MaximumGrayValue = max(Image(:));                
+-->        end;
+-->     	ColorMap = graycolormap(double(MaximumGrayValue + 1));
+-->     end;
+-->     show(Img,ColorMap);
+-->endfunction
+ 
+ 
+-->// This file is released under the 3-clause BSD license. See COPYING-BSD.
+ 
+-->// Generated by builder.sce: Please, do not edit this file
+ 
+ 
+-->try
+--> getversion("scilab");
+-->catch
+--> error("Scilab 5.0 or more is required.");
+-->end;
+ 
+ 
+-->exec(get_absolute_file_path("loader.sce")+"etc/"+"imageprocessing.start");
+Start Image Processing Toolbox
+	Load macros
+	Load gateways
+ 
+ 
+-->// This file is released under the 3-clause BSD license. See COPYING-BSD.
+ 
+-->// Generated by builder.sce : Please, do not edit this file
+ 
+-->// ----------------------------------------------------------------------------
+ 
+-->//
+ 
+-->libskeleton_cpp_path = get_absolute_file_path('loader.sce');
+ 
+-->//
+ 
+-->// ulink previous function with same name
+ 
+-->[bOK, ilib] = c_link('libskeleton_cpp');
+ 
+-->if bOK then
+-->  ulink(ilib);
+-->end
+ 
+-->//
+ 
+-->list_functions = [ 'callOctave';
+-->];
+ 
+-->addinter(libskeleton_cpp_path + filesep() + 'libskeleton_cpp' + getdynlibext(), 'libskeleton_cpp', list_functions);
+Shared archive loaded.
+Link done.
+ 
+-->// remove temp. variables on stack
+ 
+-->clear libskeleton_cpp_path;
+ 
+-->clear bOK;
+ 
+-->clear ilib;
+ 
+-->clear list_functions;
+ 
+-->// ----------------------------------------------------------------------------
+ 
+ 
+-->//Author: Anirudh Katoch
+ 
+-->//katoch.anirudh(at)gmail.com
+ 
+ 
+-->//Function to convert a list of matrices to a 3d hypermatrix
+ 
+-->//Used to convert list retreived from gateway functions to image matrix
+ 
+-->//Works for any number of channels. Each channel is an element of the list and is represented by a 2D matrix.
+ 
+ 
+-->//This is the type unsafe version that is only for debug purposes
+ 
+-->//Silently returns values as they are if they are not valid arguments.
+ 
+ 
+-->function res = il2mat(a)
+-->    if type(a)<>15 then //If a is not a list
+-->        res = a;
+-->        return a;
+-->     end
+-->     zmax = length(a);
+-->     for zi=a do
+-->         if type(zi)==15 or type(zi)==16 then
+-->             //recursive stuff here, if you choose to do so.
+-->             res = a;
+-->             return a;
+-->         elseif(type(zi)~=8) //I'm only allowing integer matrices. Tweak later for whatever type safety you want.
+-->             res = a;
+-->             return a;
+-->         end
+-->         if ~isequal(size(zi), size(a(1))) then
+-->             res = a;
+-->             return a;
+-->         end
+-->     end
+-->     res = a(1);
+-->     for zi=2:zmax do
+-->         res(:, :, zi) = a(zi);
+-->     end
+-->endfunction
+ 
+ 
+-->//Author: Anirudh Katoch
+ 
+-->//katoch.anirudh(at)gmail.com
+ 
+ 
+-->//Function to convert a 3d/2d matrix to a list of 2D matrices
+ 
+-->//Used to convert image matrices to a list that can be passed to the gateway functions
+ 
+ 
+-->//This is the type unsafe version that is only for debug purposes
+ 
+-->//Silently returns values as they are if they are not valid arguments.
+ 
+ 
+-->function res=mat2il(a)
+-->    if type(a)<=8 then //Catch if a 2D matrix
+-->        res = list(a);
+-->        return;
+-->    elseif type(a)~=17 then //Catch if not a matrix at all
+-->        res = a;
+-->        return;
+-->    elseif ndims(a)~=3 then //Catch if 4D (or higher) matrix
+-->         res = a;
+-->         return;
+-->    end
+-->    res = list(a(:, :, 1));
+-->    for i=2:size(a,3) do
+-->        res(i) = a(:, :, i);
+-->    end
+-->endfunction
+ 
+ S  =
+ 
+applycform.sci             getgaussiankernel.sci   montage.sci 
+arrowedline.sci            getrectsubpix.sci       morphologyEx.sci 
+blur.sci                   getrotationmatrix2D.sci multithresh.sci 
+boundingRect.sci           goodfeaturestotrack.sci newimshow.sci 
+bwlookup.sci               grayconnected.sci       newshow.sci 
+canny.sci                  houghcircles.sci        puttext.sci 
+circle.sci                 houghlines.sci          pyrDown.sci 
+clipline.sci               houghlinesp.sci         pyrUp.sci 
+convexhull.sci             ifftshift.sci           rectangle.sci 
+copymakeborder.sci         im2double.sci           regionfill.sci 
+cornerEigenValsAndVecs.sci imcontrast.sci          scharr.sci 
+cornerHarris.sci           imcrop.sci              sepFilter2D.sci 
+cornerMinEigenVal.sci      imgaussfilt3.sci        sobel.sci 
+cvtColor.sci               imguidedfilter.sci      threshold.sci 
+dilate.sci                 impyramid.sci           undistort.sci 
+ellipse.sci                imread.sci              whitepoint.sci 
+ellipse2poly.sci           imresize.sci            wiener2.sci 
+erode.sci                  imsharpen.sci           xyz2lab.sci 
+fftshift.sci               imwarp.sci 
+fillconvexpoly.sci         imwrite.sci 
+filter2D.sci               integralImage.sci 
+findContours.sci           laplacian.sci 
+gaussianblur.sci           line.sci 
+getStructuringElement.sci  medianblur.sci 
+ 
+-->//Function migration (image list to matrix) for: applycform
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = applycform(varargin)
+-->	select length(varargin)
+-->		case 02 then
+-->			res = il2mat(raw_applycform(mat2il(varargin(01)), varargin(02)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: arrowedline
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = arrowedline(varargin)
+-->	select length(varargin)
+-->		case 12 then
+-->			res = il2mat(raw_arrowedline(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06), varargin(07), varargin(08), varargin(09), varargin(10), varargin(11), varargin(12)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: blur
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = blur(varargin)
+-->	select length(varargin)
+-->		case 05 then
+-->			res = il2mat(raw_blur(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: boundingRect
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = boundingRect(varargin)
+-->	select length(varargin)
+-->		case 01 then
+-->			res = raw_boundingRect(varargin(01))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: bwlookup
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = bwlookup(varargin)
+-->	select length(varargin)
+-->		case 02 then
+-->			res = il2mat(raw_bwlookup(mat2il(varargin(01)), varargin(02)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: canny
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = canny(varargin)
+-->	select length(varargin)
+-->		case 05 then
+-->			res = il2mat(raw_canny(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: circle
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = circle(varargin)
+-->	select length(varargin)
+-->		case 10 then
+-->			res = il2mat(raw_circle(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06), varargin(07), varargin(08), varargin(09), varargin(10)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: clipline
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = clipline(varargin)
+-->	select length(varargin)
+-->		case 06 then
+-->			res = raw_clipline(varargin(01), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: convexhull
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = convexhull(varargin)
+-->	select length(varargin)
+-->		case 03 then
+-->			res = raw_convexhull(varargin(01), varargin(02), varargin(03))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: copymakeborder
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = copymakeborder(varargin)
+-->	select length(varargin)
+-->		case 07 then
+-->			res = il2mat(raw_copymakeborder(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06), varargin(07)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: cornerEigenValsAndVecs
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = cornerEigenValsAndVecs(varargin)
+-->	select length(varargin)
+-->		case 04 then
+-->			res = il2mat(raw_cornerEigenValsAndVecs(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+Warning :
+The identifier : raw_cornerEigenValsAndVecs
+ has been truncated to: raw_cornerEigenValsAndVe.
+
+ 
+ 
+-->//Function migration (image list to matrix) for: cornerHarris
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = cornerHarris(varargin)
+-->	select length(varargin)
+-->		case 05 then
+-->			res = il2mat(raw_cornerHarris(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: cornerMinEigenVal
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = cornerMinEigenVal(varargin)
+-->	select length(varargin)
+-->		case 04 then
+-->			res = il2mat(raw_cornerMinEigenVal(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: cvtColor
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = cvtColor(varargin)
+-->	select length(varargin)
+-->		case 03 then
+-->			res = il2mat(raw_cvtColor(mat2il(varargin(01)), varargin(02), varargin(03)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: dilate
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = dilate(varargin)
+-->	select length(varargin)
+-->		case 05 then
+-->			res = il2mat(raw_dilate(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: ellipse
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = ellipse(varargin)
+-->	select length(varargin)
+-->		case 14 then
+-->			res = il2mat(raw_ellipse(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06), varargin(07), varargin(08), varargin(09), varargin(10), varargin(11), varargin(12), varargin(13), varargin(14)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: ellipse2poly
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = ellipse2poly(varargin)
+-->	select length(varargin)
+-->		case 08 then
+-->			res = raw_ellipse2poly(varargin(01), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06), varargin(07), varargin(08))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: erode
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = erode(varargin)
+-->	select length(varargin)
+-->		case 05 then
+-->			res = il2mat(raw_erode(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: fftshift
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = fftshift(varargin)
+-->	select length(varargin)
+-->		case 01 then
+-->			res = il2mat(raw_fftshift(mat2il(varargin(01))))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+Warning : redefining function: fftshift                . Use funcprot(0) to avoid this message
+
+ 
+ 
+-->//Function migration (image list to matrix) for: fillconvexpoly
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = fillconvexpoly(varargin)
+-->	select length(varargin)
+-->		case 08 then
+-->			res = il2mat(raw_fillconvexpoly(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06), varargin(07), varargin(08)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: filter2D
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = filter2D(varargin)
+-->	select length(varargin)
+-->		case 06 then
+-->			res = il2mat(raw_filter2D(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: findContours
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = findContours(varargin)
+-->	select length(varargin)
+-->		case 05 then
+-->			res = raw_findContours(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: gaussianblur
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = gaussianblur(varargin)
+-->	select length(varargin)
+-->		case 05 then
+-->			res = il2mat(raw_gaussianblur(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: getStructuringElement
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = getStructuringElement(varargin)
+-->	select length(varargin)
+-->		case 05 then
+-->			res = raw_getStructuringElement(varargin(01), varargin(02), varargin(03), varargin(04), varargin(05))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+Warning :
+The identifier : raw_getStructuringElement
+ has been truncated to: raw_getStructuringElemen.
+
+ 
+ 
+-->//Function migration (image list to matrix) for: getgaussiankernel
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = getgaussiankernel(varargin)
+-->	select length(varargin)
+-->		case 03 then
+-->			res = raw_getgaussiankernel(varargin(01), varargin(02), varargin(03))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: getrectsubpix
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = getrectsubpix(varargin)
+-->	select length(varargin)
+-->		case 06 then
+-->			res = il2mat(raw_getrectsubpix(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: getrotationmatrix2D
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = getrotationmatrix2D(varargin)
+-->	select length(varargin)
+-->		case 04 then
+-->			res = raw_getrotationmatrix2D(varargin(01), varargin(02), varargin(03), varargin(04))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: goodfeaturestotrack
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = goodfeaturestotrack(varargin)
+-->	select length(varargin)
+-->		case 07 then
+-->			res = raw_goodfeaturestotrack(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06), varargin(07))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: grayconnected
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = grayconnected(varargin)
+-->	select length(varargin)
+-->		case 04 then
+-->			res = raw_grayconnected(varargin(01), varargin(02), varargin(03), varargin(04))
+-->		case 03 then
+-->			res = raw_grayconnected(varargin(01), varargin(02), varargin(03))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: houghcircles
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = houghcircles(varargin)
+-->	select length(varargin)
+-->		case 07 then
+-->			res = raw_houghcircles(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06), varargin(07))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: houghlines
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = houghlines(varargin)
+-->	select length(varargin)
+-->		case 06 then
+-->			res = raw_houghlines(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: houghlinesp
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = houghlinesp(varargin)
+-->	select length(varargin)
+-->		case 06 then
+-->			res = raw_houghlinesp(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: ifftshift
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = ifftshift(varargin)
+-->	select length(varargin)
+-->		case 01 then
+-->			res = il2mat(raw_ifftshift(mat2il(varargin(01))))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+Warning : redefining function: ifftshift               . Use funcprot(0) to avoid this message
+
+ 
+ 
+-->//Function migration (image list to matrix) for: im2double
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = im2double(varargin)
+-->	select length(varargin)
+-->		case 01 then
+-->			res = il2mat(raw_im2double(mat2il(varargin(01))))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: imcontrast
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = imcontrast(varargin)
+-->	select length(varargin)
+-->		case 03 then
+-->			res = il2mat(raw_imcontrast(mat2il(varargin(01)), varargin(02), varargin(03)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: imcrop
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = imcrop(varargin)
+-->	select length(varargin)
+-->		case 05 then
+-->			res = il2mat(raw_imcrop(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: imgaussfilt3
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = imgaussfilt3(varargin)
+-->	select length(varargin)
+-->		case 02 then
+-->			res = il2mat(raw_imgaussfilt3(mat2il(varargin(01)), varargin(02)))
+-->		case 01 then
+-->			res = il2mat(raw_imgaussfilt3(mat2il(varargin(01))))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: imguidedfilter
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = imguidedfilter(varargin)
+-->	select length(varargin)
+-->		case 04 then
+-->			res = il2mat(raw_imguidedfilter(mat2il(varargin(01)), mat2il(varargin(02)), varargin(03), varargin(04)))
+-->		case 03 then
+-->			res = il2mat(raw_imguidedfilter(mat2il(varargin(01)), mat2il(varargin(02)), varargin(03)))
+-->		case 02 then
+-->			res = il2mat(raw_imguidedfilter(mat2il(varargin(01)), mat2il(varargin(02))))
+-->		case 01 then
+-->			res = il2mat(raw_imguidedfilter(mat2il(varargin(01))))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: impyramid
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = impyramid(varargin)
+-->	select length(varargin)
+-->		case 02 then
+-->			res = il2mat(raw_impyramid(mat2il(varargin(01)), varargin(02)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: imread
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = imread(varargin)
+-->	select length(varargin)
+-->		case 01 then
+-->			res = il2mat(raw_imread(varargin(01)))
+-->		else
+-->			error(39)
+-->	end
+-->	tempbool = %f
+-->	for i=2:size(res, 3) do
+-->		if cmp(res(:,:,1), res(:,:,i))~=0 then
+-->			tempbool = %t
+-->		end
+-->	end
+-->	if tempbool==%f then
+-->		res= res(:, :, 1)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: imresize
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = imresize(varargin)
+-->	select length(varargin)
+-->		case 03 then
+-->			res = il2mat(raw_imresize(mat2il(varargin(01)), varargin(02), varargin(03)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: imsharpen
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = imsharpen(varargin)
+-->	select length(varargin)
+-->		case 01 then
+-->			res = il2mat(raw_imsharpen(mat2il(varargin(01))))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: imwarp
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = imwarp(varargin)
+-->	select length(varargin)
+-->		case 02 then
+-->			res = il2mat(raw_imwarp(mat2il(varargin(01)), varargin(02)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: imwrite
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = imwrite(varargin)
+-->	select length(varargin)
+-->		case 02 then
+-->			res = raw_imwrite(mat2il(varargin(01)), varargin(02))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: integralImage
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = integralImage(varargin)
+-->	select length(varargin)
+-->		case 02 then
+-->			res = raw_integralImage(varargin(01), varargin(02))
+-->		case 01 then
+-->			res = raw_integralImage(varargin(01))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: laplacian
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = laplacian(varargin)
+-->	select length(varargin)
+-->		case 05 then
+-->			res = il2mat(raw_laplacian(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: line
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = line(varargin)
+-->	select length(varargin)
+-->		case 11 then
+-->			res = il2mat(raw_line(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06), varargin(07), varargin(08), varargin(09), varargin(10), varargin(11)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: medianblur
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = medianblur(varargin)
+-->	select length(varargin)
+-->		case 02 then
+-->			res = il2mat(raw_medianblur(mat2il(varargin(01)), varargin(02)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: montage
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = montage(varargin)
+-->	select length(varargin)
+-->		case 03 then
+-->			res = il2mat(raw_montage(varargin(01), varargin(02), varargin(03)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: morphologyEx
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = morphologyEx(varargin)
+-->	select length(varargin)
+-->		case 07 then
+-->			res = il2mat(raw_morphologyEx(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06), varargin(07)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: multithresh
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = multithresh(varargin)
+-->	select length(varargin)
+-->		case 01 then
+-->			res = raw_multithresh(mat2il(varargin(01)))
+-->		case 02 then
+-->			res = raw_multithresh(mat2il(varargin(01)), varargin(02))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: newimshow
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = newimshow(varargin)
+-->	select length(varargin)
+-->		case 01 then
+-->			res = imshow(mat2il(varargin(01)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: newshow
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = newshow(varargin)
+-->	select length(varargin)
+-->		case 01 then
+-->			res = show(mat2il(varargin(01)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: puttext
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = puttext(varargin)
+-->	select length(varargin)
+-->		case 12 then
+-->			res = il2mat(raw_puttext(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06), varargin(07), varargin(08), varargin(09), varargin(10), varargin(11), varargin(12)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: pyrDown
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = pyrDown(varargin)
+-->	select length(varargin)
+-->		case 04 then
+-->			res = il2mat(raw_pyrDown(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: pyrUp
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = pyrUp(varargin)
+-->	select length(varargin)
+-->		case 04 then
+-->			res = il2mat(raw_pyrUp(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: rectangle
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = rectangle(varargin)
+-->	select length(varargin)
+-->		case 11 then
+-->			res = il2mat(raw_rectangle(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06), varargin(07), varargin(08), varargin(09), varargin(10), varargin(11)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: regionfill
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = regionfill(varargin)
+-->	select length(varargin)
+-->		case 02 then
+-->			res = raw_regionfill(varargin(01), varargin(02))
+-->		case 02 then
+-->			res = raw_regionfill(varargin(01), varargin(02))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: scharr
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = scharr(varargin)
+-->	select length(varargin)
+-->		case 06 then
+-->			res = il2mat(raw_scharr(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: sepFilter2D
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = sepFilter2D(varargin)
+-->	select length(varargin)
+-->		case 08 then
+-->			res = il2mat(raw_sepFilter2D(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06), varargin(07), varargin(08)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: sobel
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = sobel(varargin)
+-->	select length(varargin)
+-->		case 07 then
+-->			res = il2mat(raw_sobel(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04), varargin(05), varargin(06), varargin(07)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: threshold
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function [res1, res2] = threshold(varargin)
+-->	select length(varargin)
+-->		case 4 then
+-->			[res1, res2] = raw_threshold(mat2il(varargin(1)), varargin(2), varargin(3), varargin(4))
+-->			res1 = il2mat(res1)
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: undistort
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = undistort(varargin)
+-->	select length(varargin)
+-->		case 04 then
+-->			res = il2mat(raw_undistort(mat2il(varargin(01)), varargin(02), varargin(03), varargin(04)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: whitepoint
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = whitepoint(varargin)
+-->	select length(varargin)
+-->		case 01 then
+-->			res = raw_whitepoint(varargin(01))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: wiener2
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = wiener2(varargin)
+-->	select length(varargin)
+-->		case 03 then
+-->			res = il2mat(raw_wiener2(mat2il(varargin(01)), varargin(02), varargin(03)))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+ 
+-->//Function migration (image list to matrix) for: xyz2lab
+ 
+-->//Generated by migrate.cpp
+ 
+-->//Author: Anirudh Katoch
+ 
+-->function res = xyz2lab(varargin)
+-->	select length(varargin)
+-->		case 02 then
+-->			res = raw_xyz2lab(varargin(01), varargin(02))
+-->		else
+-->			error(39)
+-->	end
+-->endfunction
+ 
+SciScript.sce says he is fine!
+Waiting for goScilab
+Received goScilabTrying to execute string  img = imread('sample_images/trivial/10r.png'); imgH = size(img, 1); imgW = size(img, 2);Executed stringI am here.
+sending goMatlab
+Sent goMatlab
+Nothing to compare
+ 
+ This value was returned because the statement did not return anything decent.  
+
+
+and
+
+ 
+ This value was returned because the statement did not return anything decent.  
+
+Waiting for goScilab
+Received goScilabTrying to execute string   ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));Executed stringI am here.
+sending goMatlab
+Sent goMatlab
+Mismatch encountered:
+ 
+   54   54   54   54   54   0  
+  111  111  111  111  111   0  
+  182  182  182  182  182   0  
+   79   79   79   79   79  32  
+   18   18   18   18   18   0  
+
+
+and
+
+ 
+  54  111  182  79  18  0  
+  54  111  182  79  18  0  
+  54  111  182  79  18  0  
+  54  111  182  79  18  0  
+  54  111  182  79  18  0  
+
+Waiting for goScilab
+Received goScilabTrying to execute string   ans=imcrop(img, ceil(imgW/4), ceil(imgH/4), ceil(imgW/2), ceil(imgH/2));Executed stringI am here.
+sending goMatlab
+Sent goMatlab
+Mismatch encountered:
+ 
+  18  18   18   18   18  255   0    0  
+   0   0  255  255  255    0   0  105  
+   0   0  255  255  255  255  99    0  
+   0   0  255  255  255  224   0    0  
+   0   0  255  255  255  127   0    0  
+
+
+and
+
+ 
+  79  18    0    0    0    0    0  0  255  
+  79  18    0    0    0    0    0  0  255  
+  79  18  255  255  255  255  255  0  255  
+  79  18  255  255  255  255  255  0  255  
+  79  18  255  255  255  255  255  0  255  
+  79  18  255  255  255  255  255  0  255  
+
+Waiting for goScilab
+Received goScilabTrying to execute string   ans=blur(img, 5, 5, 1, 1);Executed stringI am here.
+sending goMatlab
+Sent goMatlab
+Nothing to compare
+ 
+  107  107  107  107  107  107  107  107  107  107  153   32   80   79    0  
+   89   89   89   89   89   89   89   89   89   89  153   32  206    1    0  
+   78   78   88   98  109  119  129  129  129  129  204   64   79    0    0  
+   56   56   76   97  117  137  158  158  158  158  153  204    1    0    0  
+   19   19   50   81  111  142  172  172  172  172  204   79    0    0   19  
+    4    4   44   85  126  167  208  208  208  208    0    1    0    0  136  
+    0    0   51  102  153  204  255  255  255  255    0    0    0    0   70  
+    0    0   41   82  122  163  204  204  204  204    0    0    0  136    1  
+   51   51   82  112  143  173  204  204  204  204   32    0   80   70    0  
+   51   51   71   92  112  133  153  153  153  153   32    0  206    1    0  
+
+
+and
+
+ 
+ This value was returned because the statement did not return anything decent.  
+
+Waiting for goScilab
+Received goScilabTrying to execute string   ans=arrowedline(ceil(imgW/4), ceil(imgH/4), ceil(imgW/2), ceil(imgH/2), 2, 2, 2, 2, 2, 2, 2, 2);Only 0/4/8 allowed , using 8 insteadExecuted stringI am here.
+sending goMatlab
+Sent goMatlab
+Nothing to compare
+ 
+ 
+        (1)
+ 
+    2.  
+
+
+and
+
+ 
+ This value was returned because the statement did not return anything decent.  
+
+Waiting for goScilab
+Received goScilabTrying to execute string   ans=canny(img, 2, 2, 2, 2);OpenCV Error: Assertion failed (scn == 3 || scn == 4) in cvtColor, file /home/luca/Downloads/opencv-2.4.11/modules/imgproc/src/color.cpp, line 3739
+terminate called after throwing an instance of 'cv::Exception'
+  what():  /home/luca/Downloads/opencv-2.4.11/modules/imgproc/src/color.cpp:3739: error: (-215) scn == 3 || scn == 4 in function cvtColor
+
+
+Scilab had trouble parsing   ans=canny(img, 2, 2, 2, 2); :(
+I am here.
+sending goMatlab
+Sent goMatlab
+Nothing to compare
+ 
+ This value was returned because the statement did not return anything decent.  
+
+
+and
+
+ 
+ This value was returned because the statement did not return anything decent.  
+
+Waiting for goScilab
+Received goScilabTrying to execute string   ans = imguidedfilter(img);Executed stringI am here.
+sending goMatlab
+Sent goMatlab
+Mismatch encountered:
+ 
+  112  112  112  112  112  112  112  112  112  112  191    0  112  104  114  
+  112  112  112  112  112  112  112  112  112  112  160    0  114  101  101  
+  108  108  108  108  108  108  108  108  108  108  160  119  111   32   32  
+   97   97   97   98  100  103  107  110  112  113  160  104  100  105   97  
+   74   74   74   78   84   92  104  114  120  122  175  105  117  115  160  
+   49   49   49   55   67   85  109  127  139  145  183   99   99  115    0  
+   24   24   24   34   54   84  124  154  174  184  222  104  101  117    0  
+    7    7    7   20   46   85  137  176  202  214  123   32  115  101    0  
+    1    1    1   15   43   85  141  182  210  224  224  114   32    0    0  
+   16   16   16   29   55   94  146  184  210  223  127  101  116  117    0  
+
+
+and
+
+ 
+  62  107  166  75  20    6    4    3    2    2  2  243  2    2    1  
+  62  107  166  76  21    6    4    3    2    2  3  244  3    2    2  
+  62  107  167  77  22    6    4    3    3    3  3  245  3    2    2  
+  62  107  167  78  23    6    4    4    3    3  3  246  3    3    3  
+  62  108  168  80  24    7    5    5    4    4  4  248  4    4    4  
+  62  108  169  81  26  246  247  248  249  249  5  249  5  249  249  
+  62  108  169  82  27  248  250  251  251  251  6  250  6  250  251  
+  62  108  170  83  27  249  251  251  252  252  7  251  7  251  251  
+  62  108  170  83  28  250  251  252  252  252  8  251  8  251  252  
+  62  108  170  83  29  250  252  252  252  252  8  251  8  252  252  
+
+Waiting for goScilab
+Received goScilabTrying to execute string   ans = imgaussfilt3(img);
+Scilab had trouble parsing   ans = imgaussfilt3(img); :(
+I am here.
+sending goMatlab
+Sent goMatlab
+Nothing to compare
+ 
+ This value was returned because the statement did not return anything decent.  
+
+
+and
+
+ 
+ This value was returned because the statement did not return anything decent.  
+
+Waiting for goScilab
+Received goScilabTrying to execute string   ans = imgaussfilt3(img, 1);
+Scilab had trouble parsing   ans = imgaussfilt3(img, 1); :(
+I am here.
+sending goMatlab
+Sent goMatlab
+Nothing to compare
+ 
+ This value was returned because the statement did not return anything decent.  
+
+
+and
+
+ 
+ This value was returned because the statement did not return anything decent.  
+
+Waiting for goScilab
+Received goScilabTrying to execute string   ans = multithresh(img);
+Scilab had trouble parsing   ans = multithresh(img); :(
+I am here.
+sending goMatlab
+Sent goMatlab
+Nothing to compare
+ 
+ This value was returned because the statement did not return anything decent.  
+
+
+and
+
+ 
+  146  
+
+Waiting for goScilab
+Received goScilabTrying to execute string   ans = multithresh(img, 16);OpenCV Error: Assertion failed (scn == 3 || scn == 4) in cvtColor, file /home/luca/Downloads/opencv-2.4.11/modules/imgproc/src/color.cpp, line 3739
+terminate called recursively
+Aborted (core dumped)

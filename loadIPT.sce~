@@ -1,0 +1,11 @@
+exec macros/show.sci
+exec macros/imshow.sci
+exec loader.sce
+exec macros/il2mat.sci
+exec macros/mat2il.sci
+S = dir('macros/output')
+for x=1:size(S(2), 1)
+exec('macros/output/'+S(2)(x))
+end
+clear S
+clear x

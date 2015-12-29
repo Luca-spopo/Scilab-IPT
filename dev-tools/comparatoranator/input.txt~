@@ -1,0 +1,32 @@
+:s: ans=imcrop(img, 0, 0, ceil(imgW/2.5), ceil(imgH/2));
+:m: ans=imcrop(img, [0, 0, ceil(imgW/2.5), ceil(imgH/2)]);
+
+:s: ans = imsharpen(img);
+:m: ans = imsharpen(img);
+
+:s: ans = regionfill(img, img>100);
+:m:
+
+:s: ans = xyz2lab([0.25 0.40 0.10]);
+:m: ans = xyz2lab([0.25 0.40 0.10]);
+
+:s: ans = wiener2(img ,1, 3.14);
+:m: ans = wiener2(img ,1, 3.14);
+
+:s: ans = impyramid(img,'reduce');
+:m: ans = impyramid(img,'reduce');
+
+:s: ans = imwarp(img,[1 0 0; .5 1 0]);
+:m: tform = affine2d([1 0 0; .5 1 0]); ans = imwarp(img, tform);
+
+:s: ans = applycform(img,'srgb2lab');
+:m: C = makecform('srgb2lab'); ans = applycform(img,C);
+
+:s: ans = fftshift(img);
+:m: ans = fftshift(img);
+
+:s: ans = ifftshift(img);
+:m: ans = ifftshift(img);
+
+:s: ans = imcomplement(img);
+:m: ans = imcomplement(img);

@@ -1,0 +1,2 @@
+all:
+	./entrypoint.sh
