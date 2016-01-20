@@ -122,6 +122,13 @@ list_functions = [ 'raw_dctmtx';
                    'raw_xyz2lab';
                    'raw_xyz2rgb';
                    'raw_xyz2uint16';
+                   'deconvlucy';
+                   'imhistmatch';
+                   'graycoprops';
+                   'graydiffweight';
+                   'decorrstretch';
+                   'adapthisteq';
+                   'affine2d';
 ];
 addinter(libskeleton_imagepr_path + filesep() + 'libskeleton_imageprocessing' + getdynlibext(), 'libskeleton_imageprocessing', list_functions);
 // remove temp. variables on stack

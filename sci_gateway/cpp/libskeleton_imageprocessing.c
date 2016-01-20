@@ -118,6 +118,13 @@ extern Gatefunc opencv_xyz2double;
 extern Gatefunc opencv_xyz2lab;
 extern Gatefunc opencv_xyz2rgb;
 extern Gatefunc opencv_xyz2uint16;
+extern Gatefunc opencv_deconvlucy;
+extern Gatefunc opencv_imhistmatch;
+extern Gatefunc opencv_graycoprops;
+extern Gatefunc opencv_graydiffweight;
+extern Gatefunc opencv_decorrstretch;
+extern Gatefunc opencv_adapthisteq;
+extern Gatefunc opencv_affine2d;
 static GenericTable Tab[]={
   {(Myinterfun)sci_gateway_without_putlhsvar,dctmtx,"raw_dctmtx"},
   {(Myinterfun)sci_gateway_without_putlhsvar,multithresh,"raw_multithresh"},
@@ -231,6 +238,13 @@ static GenericTable Tab[]={
   {(Myinterfun)sci_gateway_without_putlhsvar,opencv_xyz2lab,"raw_xyz2lab"},
   {(Myinterfun)sci_gateway_without_putlhsvar,opencv_xyz2rgb,"raw_xyz2rgb"},
   {(Myinterfun)sci_gateway_without_putlhsvar,opencv_xyz2uint16,"raw_xyz2uint16"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,opencv_deconvlucy,"deconvlucy"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,opencv_imhistmatch,"imhistmatch"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,opencv_graycoprops,"graycoprops"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,opencv_graydiffweight,"graydiffweight"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,opencv_decorrstretch,"decorrstretch"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,opencv_adapthisteq,"adapthisteq"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,opencv_affine2d,"affine2d"},
 };
  
 int C2F(libskeleton_imageprocessing)()

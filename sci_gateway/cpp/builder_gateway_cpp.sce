@@ -117,6 +117,14 @@ names = [
             "raw_xyz2rgb", "opencv_xyz2rgb";
             "raw_xyz2uint16", "opencv_xyz2uint16";
 
+			"deconvlucy", "opencv_deconvlucy";
+			"imhistmatch", "opencv_imhistmatch";
+			"graycoprops", "opencv_graycoprops";
+			"graydiffweight", "opencv_graydiffweight";
+			"decorrstretch", "opencv_decorrstretch";
+			"adapthisteq", "opencv_adapthisteq";
+			"affine2d", "opencv_affine2d";
+
 
 			
 		];
@@ -238,6 +246,16 @@ files = [
             "opencv_xyz2lab.cpp",
             "opencv_xyz2rgb.cpp",
             "opencv_xyz2uint16.cpp",
+
+
+	    	"opencv_deconvlucy.cpp",
+			"opencv_integralImage.cpp",
+			"opencv_imhistmatch.cpp",
+			"opencv_graycoprops.cpp",
+			"opencv_graydiffweight.cpp",
+			"opencv_decorrstretch.cpp",
+			"opencv_adapthisteq.cpp",
+			"opencv_affine2d.cpp",
 
 		];
 

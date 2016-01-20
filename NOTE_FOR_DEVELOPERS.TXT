@@ -1,0 +1,3 @@
+If you are adding (or have added in the past) any function to the cpp gateway, and are using image lists instead of hypermatrices:
+Please make the required modifications to the the file dev-tools/migrator/input.txt
+Instructions are availiable in the input.txt file.
