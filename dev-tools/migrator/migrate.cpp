@@ -3,54 +3,12 @@
 Author: Anirudh Katoch
 katoch.anirudh(at)gmail.com
 
+Expects input file "input.txt" in working directory.
+Expects directory "output" in working directory.
 
+Make sure you have your permissions set properly!
 
-TODO:
--getTextSize and threshold return 2 variables. Support returning multiple variables
--Do not generate select case if function not overloaded
--montage
--More helpful error messages than error(42)
-
-
-NOTE: The usage mentioned here is outdated. Please refer to input.txt for updated instructions
-
-USAGE
-e.g.
-
-:a 0 b 0 0 1 0
-
-function res = a(varargin)
-	select length(varargin)
-		case 4 then
-			res = b(varargin(1), varargin(2), mat2il(varargin(3)), varargin(4))
-		else
-			error(39)
-	end
-endfunction
-
-FUNCTION OVERLOADING:
-
-e.g.
-
-:x 0 1 y 0 0 1 0
-       z 1 0
-
-function [res1, res2] = x(varargin)
-	select length(varargin)
-		case 4 then
-			res = y(varargin(1), varargin(2), mat2il(varargin(3)), varargin(4))
-		case 2 then
-			res = il2mat(z(mat2il(varargin(1)), varargin(2)))
-		else
-			error(39)
-	end
-endfunction
-
-
--expects a folder called "output" to be present in current directory. Does not print error messages.
-
-This is currently very hacky and badly coded.
-//TODO: Redo the whole thing
+For usage and help, see input.txt
 
 */
 
