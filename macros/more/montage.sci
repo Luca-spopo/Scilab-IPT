@@ -4,7 +4,7 @@
 function res = montage(varargin)
 	select length(varargin)
 		case 03 then
-			res = il2mat(raw_montage(varargin(01), varargin(02), varargin(03)))
+			res = il2mat(raw_montage(mat2il(varargin(01)), mat2il(varargin(02)), mat2il(varargin(03))))
 		else
 			error(39)
 	end
