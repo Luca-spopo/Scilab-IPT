@@ -125,6 +125,23 @@ extern Gatefunc opencv_graydiffweight;
 extern Gatefunc opencv_decorrstretch;
 extern Gatefunc opencv_adapthisteq;
 extern Gatefunc opencv_affine2d;
+extern Gatefunc approxpolyDP;
+extern Gatefunc arclenght;
+extern Gatefunc bilateralfilter;
+extern Gatefunc borderInterpolate;
+extern Gatefunc boxfilter;
+extern Gatefunc contourarea;
+extern Gatefunc boxfilter;
+extern Gatefunc fitellipse;
+extern Gatefunc getkerneltype;
+extern Gatefunc histeq;
+extern Gatefunc imrotate;
+extern Gatefunc mean1;
+extern Gatefunc minAreaRect;
+extern Gatefunc minimumenclosingcirlce;
+extern Gatefunc pyrMeanShiftFiltering;
+extern Gatefunc rgb2gray;
+extern Gatefunc warpaffine;
 static GenericTable Tab[]={
   {(Myinterfun)sci_gateway_without_putlhsvar,dctmtx,"raw_dctmtx"},
   {(Myinterfun)sci_gateway_without_putlhsvar,multithresh,"raw_multithresh"},
@@ -243,8 +260,25 @@ static GenericTable Tab[]={
   {(Myinterfun)sci_gateway_without_putlhsvar,opencv_graycoprops,"graycoprops"},
   {(Myinterfun)sci_gateway_without_putlhsvar,opencv_graydiffweight,"graydiffweight"},
   {(Myinterfun)sci_gateway_without_putlhsvar,opencv_decorrstretch,"decorrstretch"},
-  {(Myinterfun)sci_gateway_without_putlhsvar,opencv_adapthisteq,"adapthisteq"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,opencv_adapthisteq,"adaptf"},
   {(Myinterfun)sci_gateway_without_putlhsvar,opencv_affine2d,"affine2d"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,approxpolyDP,"approxpolyDP"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,arclenght,"arclenght"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,bilateralfilter,"bilateralfilter"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,borderInterpolate,"borderInterpolate"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,boxfilter,"boxfilter"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,contourarea,"contourarea"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,boxfilter,"boxfilter"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,fitellipse,"fitellipse"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,getkerneltype,"getkerneltype"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,histeq,"histeq"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,imrotate,"imrotate"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,mean1,"mean1"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,minAreaRect,"minAreaRect"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,minimumenclosingcirlce,"minimumenclosingcirlce"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,pyrMeanShiftFiltering,"pyrMeanShiftFiltering"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,rgb2gray,"rgb2gray"},
+  {(Myinterfun)sci_gateway_without_putlhsvar,warpaffine,"warpaffine"},
 };
  
 int C2F(libskeleton_imageprocessing)()

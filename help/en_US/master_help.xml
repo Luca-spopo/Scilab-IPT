@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE book [
 <!--Begin Entities-->
-<!ENTITY a25772f47f5e18506c95ce61bb19984ff SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/blur.xml">
-<!ENTITY a6329f11f59e5e685d41a9c556416cd18 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/canny.xml">
-<!ENTITY a35024983faf07f0011ad0ceb27a78d7b SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/cornerEigenValAndVecs.xml">
-<!ENTITY a2b4a6711bf4d81295094d3d685744fa1 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/cornerHarris.xml">
-<!ENTITY a703ecd98f9c2b1d0e2b6ba5749f384f1 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/filter2D.xml">
-<!ENTITY acebe2f7feb996e72a5165dac7189e792 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/gaussianblur.xml">
-<!ENTITY a55fa104c062001c2996cc8cdb88c25d9 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/getTextSize.xml">
-<!ENTITY ac57ae0a5635dc4ad31adfad911bc9f41 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/houghlines.xml">
-<!ENTITY a7f8205edee316ed0cc52be4ef0a7e864 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/houghlinesp.xml">
-<!ENTITY a863190d700bba19e18d2df405617a4af SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/im2double.xml">
-<!ENTITY ae0441d59713d84dcafb788091dfd4dfb SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/imcontrast.xml">
-<!ENTITY a324ecea8c42c46dc5229722a80e4860b SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/imcrop.xml">
-<!ENTITY a1ec7cc0ed666381bf439de63497d5de7 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/imread.xml">
-<!ENTITY ad46fbe7883c5e410a6f612a881141575 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/imresize.xml">
-<!ENTITY a82a6eb4d6a509f4bfc7208c3f916a780 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/imsharpen.xml">
-<!ENTITY ad9e5a1bc6731852efbaa17351e6b9d83 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/imwrite.xml">
-<!ENTITY a7cf9f6968dda6f1010b91d763c692742 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/montage.xml">
-<!ENTITY a33e19d6201fa78ff766ddb08c59ec8f0 SYSTEM "/home/luca/FOOBAR/FOSSEE/IPT/help/en_US/undistort.xml">
+<!ENTITY aa1da7f4863cccbd2d2131215f7bdd90b SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/blur.xml">
+<!ENTITY af038974ca9d5d12d1b82e6627d4a40f6 SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/canny.xml">
+<!ENTITY a2789b6764a9f9eacaead226d8c2c19d0 SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/cornerEigenValAndVecs.xml">
+<!ENTITY a539725017728276776c8dbb70b37fe65 SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/cornerHarris.xml">
+<!ENTITY aa49b3be1dffa6e184ebd9a7b7df09c72 SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/filter2D.xml">
+<!ENTITY a4a1a26419660ef625b6e232dfd9a5e47 SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/gaussianblur.xml">
+<!ENTITY a1386f41f7601101ccc6fca60cfb4bf52 SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/getTextSize.xml">
+<!ENTITY a171acd0de75d63f2328da43059ee679f SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/houghlines.xml">
+<!ENTITY ab5b4ad41526ace076caa660a89680e26 SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/houghlinesp.xml">
+<!ENTITY a6d487bc680e1325025b92ccc04d311ea SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/im2double.xml">
+<!ENTITY aeec084098725b0052fcfd8d0db3fb38f SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/imcontrast.xml">
+<!ENTITY ac832a7e2e2883f8f93135017fd71a523 SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/imcrop.xml">
+<!ENTITY ab108edfaf1744aa128d96f001d743c98 SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/imread.xml">
+<!ENTITY aae4002db0a799fef3855b3fda0a11c32 SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/imresize.xml">
+<!ENTITY ac2a4a65f8ca0ff850d954f18b6f1227d SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/imsharpen.xml">
+<!ENTITY a6b46a1152855d6171ed067c3a03253c7 SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/imwrite.xml">
+<!ENTITY ab67997bfb87f91a10ef7264a8fbc483c SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/montage.xml">
+<!ENTITY af2c1b359ccbbcb9081a8047b2e406d7d SYSTEM "/home/rohan/Desktop/Scilab-IPT-master/help/en_US/undistort.xml">
 <!--End Entities-->
 ]>
 <book version="5.0-subset Scilab" xml:lang="en_US"
@@ -33,25 +33,25 @@
     <title>Image Processing Toolbox</title>
   </info>
 
-<part xml:id='section_379e0abf30b23a2969118e170eb8f088'>
+<part xml:id='section_72223afb6b58d6488b70e8bc01335ef3'>
 <title>Image Processing Toolbox</title>
-&a25772f47f5e18506c95ce61bb19984ff;
-&a6329f11f59e5e685d41a9c556416cd18;
-&a35024983faf07f0011ad0ceb27a78d7b;
-&a2b4a6711bf4d81295094d3d685744fa1;
-&a703ecd98f9c2b1d0e2b6ba5749f384f1;
-&acebe2f7feb996e72a5165dac7189e792;
-&a55fa104c062001c2996cc8cdb88c25d9;
-&ac57ae0a5635dc4ad31adfad911bc9f41;
-&a7f8205edee316ed0cc52be4ef0a7e864;
-&a863190d700bba19e18d2df405617a4af;
-&ae0441d59713d84dcafb788091dfd4dfb;
-&a324ecea8c42c46dc5229722a80e4860b;
-&a1ec7cc0ed666381bf439de63497d5de7;
-&ad46fbe7883c5e410a6f612a881141575;
-&a82a6eb4d6a509f4bfc7208c3f916a780;
-&ad9e5a1bc6731852efbaa17351e6b9d83;
-&a7cf9f6968dda6f1010b91d763c692742;
-&a33e19d6201fa78ff766ddb08c59ec8f0;
+&aa1da7f4863cccbd2d2131215f7bdd90b;
+&af038974ca9d5d12d1b82e6627d4a40f6;
+&a2789b6764a9f9eacaead226d8c2c19d0;
+&a539725017728276776c8dbb70b37fe65;
+&aa49b3be1dffa6e184ebd9a7b7df09c72;
+&a4a1a26419660ef625b6e232dfd9a5e47;
+&a1386f41f7601101ccc6fca60cfb4bf52;
+&a171acd0de75d63f2328da43059ee679f;
+&ab5b4ad41526ace076caa660a89680e26;
+&a6d487bc680e1325025b92ccc04d311ea;
+&aeec084098725b0052fcfd8d0db3fb38f;
+&ac832a7e2e2883f8f93135017fd71a523;
+&ab108edfaf1744aa128d96f001d743c98;
+&aae4002db0a799fef3855b3fda0a11c32;
+&ac2a4a65f8ca0ff850d954f18b6f1227d;
+&a6b46a1152855d6171ed067c3a03253c7;
+&ab67997bfb87f91a10ef7264a8fbc483c;
+&af2c1b359ccbbcb9081a8047b2e406d7d;
 </part>
 </book>

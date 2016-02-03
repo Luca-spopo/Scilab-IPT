@@ -35,7 +35,7 @@ names = [
             "raw_gabor", "opencv_gabor";
             "raw_gaussianblur", "opencv_gaussianblur";
             "raw_getStructuringElement", "opencv_getStructuringElement";
-            "raw_getTextSize", "opencv_getTextSize";
+            "getTextSize", "opencv_getTextSize";
             "raw_getgaussiankernel", "opencv_getgaussiankernel";
             "raw_getrectsubpix", "opencv_getrectsubpix";
             "raw_getrotationmatrix2D", "opencv_getrotationmatrix2D";
@@ -122,8 +122,27 @@ names = [
 			"graycoprops", "opencv_graycoprops";
 			"graydiffweight", "opencv_graydiffweight";
 			"decorrstretch", "opencv_decorrstretch";
-			"adapthisteq", "opencv_adapthisteq";
+			"adaptf", "opencv_adapthisteq";
 			"affine2d", "opencv_affine2d";
+
+
+			"approxpolyDP","approxpolyDP";
+			"arclenght","arclenght";
+			"bilateralfilter","bilateralfilter";
+			"borderInterpolate","borderInterpolate";
+			"boxfilter","boxfilter";
+			"contourarea","contourarea";
+			"boxfilter","boxfilter";
+			"fitellipse","fitellipse";
+			"getkerneltype","getkerneltype";
+			"histeq","histeq";
+			"imrotate","imrotate";
+			"mean1","mean1";
+			"minAreaRect","minAreaRect";
+			"minimumenclosingcirlce","minimumenclosingcirlce";
+			"pyrMeanShiftFiltering","pyrMeanShiftFiltering";
+			"rgb2gray","rgb2gray";
+			"warpaffine","warpaffine";
 
 
 			
@@ -256,6 +275,25 @@ files = [
 			"opencv_decorrstretch.cpp",
 			"opencv_adapthisteq.cpp",
 			"opencv_affine2d.cpp",
+
+			"rgb2gray.cpp",
+			"warpaffine.cpp",
+			"opencv_pyrMeanShiftFiltering.cpp",
+			"opencv_minimumenclosingcirlce.cpp",
+			"opencv_minAreaRect.cpp",
+			"opencv_mean1.cpp",
+			"opencv_imrotate.cpp",
+			"opencv_getkerneltype.cpp",
+			"opencv_fitellipse.cpp",
+			"opencv_contourarea.cpp",
+			"opencv_boxfilter.cpp",
+			"opencv_borderInterpolate.cpp",
+			"opencv_bilateralfilter.cpp",
+			"opencv_arclength.cpp",
+			"opencv_approxpolyDP.cpp",
+			"opencv_histeq.cpp",
+
+
 
 		];
 
