@@ -1,6 +1,17 @@
-%random helpful tip:    drawnow('update'); %Flushes the file
+%random helpful tip:    drawnow('update'); %Flushes the files
 
-inputFileName = input('Enter input file (Enter for stdin): ', 's');
+run('dfa_ttd_maker');
+
+fd = fopen('intermediate.txt', 'w');
+
+if(menu('Do you want me to test on coloured images?', 'Yes', 'No') == 1)
+	dfa(ttd, fd, 'sample_images/color/');
+end
+dfa(ttd, fd, 'sample_images/greyscale/');
+
+inputFileName = 'intermediate.txt'; %input('Enter input file (Enter for stdin): ', 's');
+
+%The part above this was historicallly part of a separate script, hence the useless fileID_input below.
 
 fileID_input = 0;
 if( ~isempty(strtrim(inputFileName)))
@@ -17,11 +28,6 @@ if(menu('Do you want me to run the builder? (Runs GUI)', 'Yes', 'No') == 1)
 	tryunix('scilab -f build.sce &> /dev/null');
 end
 
-%if(menu('Do you want me to run the loader? (Runs GUI)', 'Yes', 'No') == 1)
-%	tryunix('scilab -f load.sce &> /dev/null');
-%end
-%now that I think about it, ^ that makes no sense.
-
 tryunix('if [ ! -p goMatlab ]; then mkfifo goMatlab; fi');
 tryunix('if [ ! -p goScilab ]; then mkfifo goScilab; fi');
 
@@ -31,6 +37,9 @@ tryunix('echo > logs.txt');
 
 %tryunix('scilab-cli -f sciScript.sce &> scilogs.txt &');
 %God knows why this isnt working, open a new terminal and run the command yourself instead
+%Making a hacky and temporary (haha) workaround.
+
+hacky_temp_flag = 1;
 
 while 1
     [fileID_sciin, err2] = fopen('sciin', 'w');
@@ -48,6 +57,10 @@ while 1
     fprintf(fileID_sciin, '%s', cmdSci);
     fclose(fileID_sciin);
     fprintf('\nsending goScilab')
+    if(hacky_temp_flag == 1)
+        tryunix('scilab-cli -f sciScript.sce &> scilogs.txt &');
+	hacky_temp_flag = 0;
+    end
     tryunix('echo FilthyIPC > goScilab'); % #1
     fprintf('\nsent goScilab')
     ans = strcat('This value was returned because the statement did not return anything decent.');

@@ -2,9 +2,9 @@
 
 //Author: Anirudh Katoch
 //katoch.anirudh(at)gmail.com
-//Not proud of this.
 
 //Rename the variables to ones with less chance of collisions
+//...Or figure out how to make a different enviroment for the execution.
 
 printf('SciScript.sce says hello world!');
 

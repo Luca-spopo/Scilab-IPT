@@ -1,4 +1,4 @@
-%Creates the 2 wide vector of string cells for you so that you can pass it to dfa
+%Creates the Nx2 matrix of string cells for you so that you can pass it to dfa
 
 
 inputFileName = input('Enter input file (Enter for stdin): ', 's');

@@ -1,3 +1,6 @@
+%Abstracts taking the input commands for us.
+%Takes the "commands to run on scilab and matlab" from console or a file
+
 function [sciCmd, matCmd] = takeinput(fd)
 	matCmd = -1;
 	if(fd > 2)
@@ -14,11 +17,11 @@ function [sciCmd, matCmd] = takeinput(fd)
 		matCmd = sciCmd;
 		return;
 	end
-	catch e %I know very well just how ugly this is. But I can't think of any useful errors to catch besides the ones we are to ignore anyway.
+	catch e %I can't think of any useful errors to catch besides the ones we are to ignore anyway.
 	end
 
 	try
-	if(	sciCmd == -1 ) %I can't seem to figure out how the | operator works in this thing
+	if(	sciCmd == -1 ) %kicks in if eof was encountered.
 		sciCmd = 'mar jao plij'
 		matCmd = sciCmd;
 		return;
@@ -35,23 +38,22 @@ function [sciCmd, matCmd] = takeinput(fd)
 	end
 
 	%shameless copy paste
-	%no, maintainance of this code is not my priority right now.
 	try
 	if(isempty(strtrim(matCmd)))
 		matCmd = sciCmd;
 	end
-	catch e %I know very well just how ugly this is. But I can't think of any useful errors to catch besides the ones we are to ignore anyway.
+	catch e
 	end
 
 	try
-	if(	matCmd == -1 ) %I can't seem to figure out how the | operator works in this thing
+	if(matCmd == -1 )
 		matCmd = sciCmd;
 	end
 	catch e
 	end
 
 
-	if(fd > 2)
+	if(fd > 2) %We need feedback on the screen, or things get boring.
 		fprintf('\nComparing...\nscilab command: %s\nmatlab command: %s\n', sciCmd, matCmd);
 	end
 	

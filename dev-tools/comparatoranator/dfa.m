@@ -1,4 +1,4 @@
-%Takes a 2 wide vector of cell strings to execute, and provides input data for various values of img, imgH etc taken from all the images of a directory
+%Takes a 2 wide coloumn of cell strings to execute, and provides input data for various values of img, imgH etc taken from all the images of a directory
 
 %goes to cdto
 %for all files that are not a directory
